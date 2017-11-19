@@ -55,7 +55,7 @@ def parse_strings(path:,output:)
     types = parameter_types.uniq.flatten
     if types.count >= 1
       arguments = types.map.with_index {|type, index| "_ value#{index}: #{type}"} * ","
-      params = types.map.with_index {|type, index| "value#{index}"} * " ,"
+      params = types.map.with_index {|type, index| "value#{index}"} * ", "
       swift_contents += "    /// #{value_developer}\n"
       swift_contents += "    static func #{key}(#{arguments}) -> String {\n"
       swift_contents += "        return String.localizedStringWithFormat(NSLocalizedString(\"#{key}\", comment: \"\"), #{params})\n"
